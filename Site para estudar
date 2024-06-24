@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT - Assistente Virtual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ChatGPT - Assistente Virtual</h1>
+    </header>
+    <main>
+        <div id="chat-container">
+            <div id="chat-messages">
+                <!-- Mensagens do chat aparecerão aqui -->
+            </div>
+            <div id="user-input">
+                <input type="text" id="user-message" placeholder="Digite sua mensagem...">
+                <button onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 ChatGPT. Todos os direitos reservados.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* Altura total menos altura do header e footer */
+}
+
+#chat-container {
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 80vh; /* Altura máxima do chat */
+}
+
+#chat-messages {
+    margin-bottom: 20px;
+}
+
+#user-input {
+    display: flex;
+    align-items: center;
+}
+
+#user-input input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#user-input button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#user-input button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+function sendMessage() {
+    const userMessage = document.getElementById("user-message").value;
+    if (userMessage.trim() === "") return;
+
+    appendMessage("user", userMessage);
+    // Lógica para enviar mensagem para o assistente virtual e obter resposta
+    // Aqui você pode adicionar a lógica para simular uma resposta do assistente virtual
+    setTimeout(() => {
+        const response = "Olá! Como posso ajudar você?";
+        appendMessage("assistant", response);
+    }, 500);
+    
+    document.getElementById("user-message").value = "";
+}
+
+function appendMessage(sender, message) {
+    const chatMessages = document.getElementById("chat-messages");
+    const messageElement = document.createElement("div");
+    messageElement.classList.add(sender === "user" ? "user-message" : "assistant-message");
+    messageElement.innerText = message;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
