@@ -122,4 +122,6 @@ function appendMessage(sender, message) {
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-
+Funcionalidades Implementadas
+Envio de Mensagem : Os usuários podem digitar uma mensagem e enviar clicando no botão "Enviar".
+Resposta Simulada : Simula uma resposta do assistente virtual após o envio da mensagem do usuário.
